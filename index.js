@@ -153,12 +153,12 @@ let rangeObject = {
 // }
 
 // Функція "useSymbolIterator" використовує ітератор для отримання значень об'єкта
-function useSymbolIterator(obj) {
+function useSymbolIterator(obj, task) {
   // Проходимо крізь елементи об'єкта obj, використовуючи цикл "for...of"
   let result = [];
   for (let num of obj) {
-    // ВИДАЄ ПОМИЛКУ ЩОДО НЕ МОЖЛИВОСТІ ІТЕРАЦІЇ
-    result[num - 1] = num;
+    task === 9 ? (result[num - 1] = num) : (result[num] = num);
+    // console.log(num, typeof result[num]);
   }
   // Додаємо кожне значення до масиву "result"
   // Повертаємо масив зі значеннями
@@ -167,7 +167,7 @@ function useSymbolIterator(obj) {
 
 console.log("Завдання 9 ====================================");
 
-console.log(useSymbolIterator(rangeObject)); //Виведе [ 1, 2, 3, 4, 5, 6 ]
+console.log(useSymbolIterator(rangeObject, 9)); //Виведе [ 1, 2, 3, 4, 5, 6 ]
 
 // Завдання 10: Використання Symbol.iterator
 
@@ -195,11 +195,12 @@ let myObject = {
   //Створюємо змінну value якій присвоємо властивість name елемента масиву category з індексом currentIndex
   // Збільшимо currentIndex на одиницю
   next() {
-    let value = "";
     if (this.currentIndex < this.category.length) {
-      value = this.category.name;
-      this.currentIndex++;
-      return { done: false, value: value };
+      // let value = this.category[this.currentIndex].name;
+      // console.log(this.currentIndex, value);
+      // this.currentIndex++;
+      // return { done: false, value };
+      return { done: false, value: this.category[this.currentIndex++].name };
     } else {
       return { done: true };
     }
