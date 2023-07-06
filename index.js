@@ -153,7 +153,7 @@ let rangeObject = {
 // }
 
 // Функція "useSymbolIterator" використовує ітератор для отримання значень об'єкта
-function useSymbolIterator(obj, task) {
+function useSymbolIterator(obj, task = 0) {
   // Проходимо крізь елементи об'єкта obj, використовуючи цикл "for...of"
   let result = [];
   for (let num of obj) {
